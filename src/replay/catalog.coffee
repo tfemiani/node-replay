@@ -1,4 +1,5 @@
 assert         = require("assert")
+mkdirp         = require('mkdirp')
 File           = require("fs")
 Path           = require("path")
 Matcher        = require("./matcher")
@@ -9,21 +10,6 @@ existsSync = File.existsSync || Path.existsSync
 
 
 existsSync = File.existsSync || Path.existsSync
-
-
-mkdir = (pathname, callback)->
-  exists pathname, (found)->
-    if found
-      callback null
-      return
-    parent = Path.dirname(pathname)
-    exists parent, (found)->
-      if found
-        File.mkdir pathname, callback
-      else
-        mkdir parent, ->
-          File.mkdir pathname, callback
-
 
 class Catalog
   constructor: (@settings)->
@@ -77,7 +63,7 @@ class Catalog
     pathname = "#{@getFixturesDir()}/#{host.replace(":", "-")}"
     logger = request.replay.logger
     logger.log "Creating #{pathname}"
-    mkdir pathname, (error)->
+    mkdirp pathname, (error)->
       return callback error if error
       filename = "#{pathname}/#{uid}"
 
