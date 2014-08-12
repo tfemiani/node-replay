@@ -80,7 +80,7 @@ class ProxyRequest extends HTTP.ClientRequest
     return
 
   end: (data, encoding)->
-    assert !@ended, "Already called end"
+    #assert !@ended, "Already called end"
     if data
       @write data, encoding
     @ended = true
