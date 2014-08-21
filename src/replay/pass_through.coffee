@@ -23,6 +23,8 @@ passThrough = (allow)->
         path:     request.path
         method:   request.method
         headers:  request.headers
+        cert:     request.cert
+        key:      request.key
 
       if request.url.protocol == "https:"
         http = httpsRequest(options)
