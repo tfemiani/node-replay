@@ -20,9 +20,9 @@
   },
   "files": [ "src" ],
   "scripts": {
-    "build":        "node_modules/.bin/coffee --bare --compile --output lib/replay src/replay/*.coffee",
-    "postinstall":  "node_modules/.bin/coffee --bare --compile --output lib/replay src/replay/*.coffee",
-    "prepublish":   "node_modules/.bin/coffee --bare --compile --output lib/replay src/replay/*.coffee",
+    "build":        "node node_modules/coffee-script/bin/coffee --bare --compile --output lib/replay src/replay/",
+    "postinstall":  "node node_modules/coffee-script/bin/coffee --bare --compile --output lib/replay src/replay/",
+    "prepublish":   "node node_modules/coffee-script/bin/coffee --bare --compile --output lib/replay src/replay/",
     "postpublish":  "rm -rf lib",
     "test":         "./node_modules/.bin/mocha"
   },

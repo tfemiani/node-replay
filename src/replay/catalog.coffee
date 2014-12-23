@@ -131,7 +131,7 @@ parseHeaders = (filename, header_lines, only = null)->
   headers = Object.create(null)
   for line in header_lines
     continue if line == ""
-    [_, name, value] = line.match(/^(.*?)\:\s+(.*)$/)
+    [_, name, value] = line.match(/^(.*?)\:\s+(.*)$/m)
     continue if only && !match(name, only)
 
     key = (name || "").toLowerCase()
