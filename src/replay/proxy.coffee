@@ -49,7 +49,9 @@ class ProxyRequest extends HTTP.ClientRequest
         @headers[n.toLowerCase()] = if v && v.toString then v.toString() else ""
     @cert = options.cert
     @key = options.key
+    @rejectUnauthorized = options.rejectUnauthorized
     @secureProtocol = options.secureProtocol
+    @secureOptions = options.secureOptions
 
   setHeader: (name, value)->
     assert !@ended, "Already called end"

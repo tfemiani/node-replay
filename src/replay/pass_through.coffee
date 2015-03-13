@@ -17,15 +17,17 @@ passThrough = (allow)->
   return (request, callback)->
     if allow(request)
       options =
-        protocol:       request.url.protocol
-        hostname:       request.url.hostname
-        port:           request.url.port
-        path:           request.path
-        method:         request.method
-        headers:        request.headers
-        cert:           request.cert
-        key:            request.key
-        secureProtocol: request.secureProtocol
+        cert:               request.cert
+        headers:            request.headers
+        hostname:           request.url.hostname
+        key:                request.key
+        method:             request.method
+        path:               request.path
+        port:               request.url.port
+        protocol:           request.url.protocol
+        rejectUnauthorized: request.rejectUnauthorized
+        secureOptions:      request.secureOptions
+        secureProtocol:     request.secureProtocol
 
       if request.url.protocol == "https:"
         http = httpsRequest(options)
