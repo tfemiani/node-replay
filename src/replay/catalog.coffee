@@ -121,7 +121,11 @@ readAndInitialParseFile = (filename)->
   buffer = File.readFileSync(filename)
   parts = buffer.toString('utf8').split('\n\n')
   if parts.length > 2
-    body = buffer.slice(parts[0].length + parts[1].length + 4)
+    bodyStartPosition =
+      new Buffer(parts[0], 'utf-8').length +
+      new Buffer(parts[1], 'utf-8').length + 4;
+
+    body = buffer.slice(bodyStartPosition);
   return [parts[0], parts[1], body || '']
 
 # Parse headers from header_lines.  Optional argument `only` is an array of
